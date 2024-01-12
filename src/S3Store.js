@@ -111,9 +111,9 @@ export default class S3Store extends StorageAdapter {
       Bucket: process.env.AWS_S3_BUCKET,
       Key: `${Date.now()}-${fileKey.filename}`
     };
-    console.info(options)
+    const optObj = {};
     if(options["content_type"]) {
-      opts["ContentType"] = options["content_type"]
+      optObj["ContentType"] = options["content_type"]
     }
 
     debug("S3Store _getWriteStream opts:", opts);
@@ -125,6 +125,7 @@ export default class S3Store extends StorageAdapter {
 
     const uploadData = await this.s3.createMultipartUpload({
       ...opts,
+      ...optObj,
       ACL: this.objectACL
     }).promise();
 
