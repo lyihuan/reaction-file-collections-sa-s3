@@ -112,9 +112,9 @@ export default class S3Store extends StorageAdapter {
       Key: `${Date.now()}-${fileKey.filename}`
     };
     console.info(options)
-    if(options["content-type"]) {
-      opts["content-type"] = options["content-type"]
-    }
+    // if(options["content-type"]) {
+    //   opts["content-type"] = options["content-type"]
+    // }
 
     debug("S3Store _getWriteStream opts:", opts);
     debug("S3Store _getWriteStream options:", options);
